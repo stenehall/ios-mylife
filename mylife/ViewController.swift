@@ -86,12 +86,20 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         ("Action", "Jumped")
     ]
     
+    private let activityLabel:UILabel = {
+        var label = UILabel()
+        label.textAlignment = NSTextAlignment.center
+        label.text = "Add another Activity"
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }()
+    
     private let activityPicker:UIPickerView = {
         let picker = UIPickerView()
         
         return picker
     }()
-    
     
     private let loginContentView:UIView = {
         let view = UIView()
@@ -163,6 +171,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         loginContentView.addSubview(btnLogin)
         view.addSubview(loginContentView)
         
+        signedInContentView.addSubview(activityLabel)
         signedInContentView.addSubview(activityType)
         signedInContentView.addSubview(activityBody)
         signedInContentView.addSubview(btnSubmit)
@@ -269,13 +278,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         btnLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         btnLogin.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
-        
+        signedInContentView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         signedInContentView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         signedInContentView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        signedInContentView.heightAnchor.constraint(equalToConstant: view.frame.height/3).isActive = true
-        signedInContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        signedInContentView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
         
-        activityType.topAnchor.constraint(equalTo:signedInContentView.topAnchor, constant:40).isActive = true
+        activityLabel.topAnchor.constraint(equalTo:signedInContentView.topAnchor, constant:40).isActive = true
+        activityLabel.leftAnchor.constraint(equalTo:signedInContentView.leftAnchor, constant:20).isActive = true
+        activityLabel.rightAnchor.constraint(equalTo:signedInContentView.rightAnchor, constant:-20).isActive = true
+
+        activityType.topAnchor.constraint(equalTo:activityLabel.bottomAnchor, constant:20).isActive = true
         activityType.leftAnchor.constraint(equalTo:signedInContentView.leftAnchor, constant:20).isActive = true
         activityType.rightAnchor.constraint(equalTo:signedInContentView.rightAnchor, constant:-20).isActive = true
         activityType.heightAnchor.constraint(equalToConstant:30).isActive = true

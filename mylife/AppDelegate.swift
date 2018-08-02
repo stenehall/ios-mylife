@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
+        repeatNotification()
+        
         // Check if we haev a users update the view based on it
         Auth.auth().addStateDidChangeListener { (_, user) in
             if user != nil {
@@ -65,6 +67,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userIsSignedIn() {
         let viewController = self.window?.rootViewController as! ViewController
         viewController.signedIn()
+    }
+    
+    func repeatNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "It's Time!!"
+        content.body = "Save a memory of what's been happening over the last few hours"
+        content.categoryIdentifier = "mylife.reminder"
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 21600.0, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: "mylife.reminder", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("error in allowing notifications: \(error.localizedDescription)")
+            }
+        }
+        print("added notification:\(request.identifier)")
     }
     
     // Do we actually need all thse functions?
