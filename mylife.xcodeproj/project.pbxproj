@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C5031D071DD8755D31FA219C /* libPods-mylife.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D44D4A6759D65830986983 /* libPods-mylife.a */; };
+		CFF19AFC3155A67E3D147919 /* Pods_mylife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9647FC2B833437DEC762259A /* Pods_mylife.framework */; };
 		FBFD3A182111CA0A00EDC625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFD3A172111CA0A00EDC625 /* AppDelegate.swift */; };
 		FBFD3A1A2111CA0A00EDC625 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFD3A192111CA0A00EDC625 /* ViewController.swift */; };
 		FBFD3A1F2111CA0B00EDC625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBFD3A1E2111CA0B00EDC625 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		25D44D4A6759D65830986983 /* libPods-mylife.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mylife.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9647FC2B833437DEC762259A /* Pods_mylife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mylife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E3F4D05CD574A6B0C5C8723 /* Pods-mylife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mylife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mylife/Pods-mylife.debug.xcconfig"; sourceTree = "<group>"; };
 		D266B6A0536BA6E0162B0726 /* Pods-mylife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mylife.release.xcconfig"; path = "Pods/Target Support Files/Pods-mylife/Pods-mylife.release.xcconfig"; sourceTree = "<group>"; };
 		FBFD3A142111CA0A00EDC625 /* mylife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mylife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,8 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5031D071DD8755D31FA219C /* libPods-mylife.a in Frameworks */,
 				FBFD9301211240FD004ECB64 /* HealthKit.framework in Frameworks */,
+				CFF19AFC3155A67E3D147919 /* Pods_mylife.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				FBFD9300211240FD004ECB64 /* HealthKit.framework */,
-				25D44D4A6759D65830986983 /* libPods-mylife.a */,
+				9647FC2B833437DEC762259A /* Pods_mylife.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,6 +109,7 @@
 				FBFD3A112111CA0A00EDC625 /* Frameworks */,
 				FBFD3A122111CA0A00EDC625 /* Resources */,
 				067B10833127F7122CD658F8 /* [CP] Copy Pods Resources */,
+				1AA34F8FA1F86148387D19EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,19 +179,53 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-mylife/Pods-mylife-resources.sh",
-				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mylife/Pods-mylife-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1AA34F8FA1F86148387D19EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mylife/Pods-mylife-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mylife/Pods-mylife-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5053F0882F57CDF3A455EFD1 /* [CP] Check Pods Manifest.lock */ = {
