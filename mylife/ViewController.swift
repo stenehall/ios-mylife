@@ -52,7 +52,12 @@ func submitActivity(activity: Activity, user: User,  location: CLLocation, place
                 "locality": placemark.locality ?? "",
                 "subLocality": placemark.subLocality ?? "",
             ]
-
+        
+//        print(ServerValue.timestamp())
+//        let t = ServerValue.timestamp()
+//        let t1 = NSDate().timeIntervalSince1970
+//        let t2 = Firestore.database.ServerValue.TIMESTAMP
+        
         db.collection("users").document(user.uid).collection("activities").addDocument(data: [
                 "type": activity.type,
                 "prettyType": activity.prettyType,
@@ -62,7 +67,7 @@ func submitActivity(activity: Activity, user: User,  location: CLLocation, place
                 "displayName": user.displayName!,
                 "email": user.email!,
                 "uid": user.uid,
-                "createdAt": Firebase.ServerValue.timestamp(),
+                "createdAt": Firebase.FieldValue.serverTimestamp(),
                 "healthKit": [
                     "stepCount": stepCount
                 ],
@@ -214,7 +219,8 @@ class ViewController:
         let txtField = UITextField()
         txtField.borderStyle = .roundedRect
         txtField.placeholder = "Activity Body"
-        
+        txtField.clearButtonMode = .whileEditing
+
         txtField.translatesAutoresizingMaskIntoConstraints = false
         
         return txtField
@@ -293,29 +299,33 @@ class ViewController:
     }
 
     func fileUpload(completion: @escaping (String) -> Void) {
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        var data = Data()
-        data = UIImageJPEGRepresentation(imageView.image!, 0.8)!
-        
-        let riversRef = storageRef.child("images/" + NSUUID().uuidString + ".jpg")
+        if((imageView.image != nil) && imageView.image?.size.width != 0) {
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            var data = Data()
+            data = UIImageJPEGRepresentation(imageView.image!, 0.8)!
+            
+            let riversRef = storageRef.child("images/" + NSUUID().uuidString + ".jpg")
 
-        let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                return
-            }
+            let uploadTask = riversRef.putData(data, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    return
+                }
 
-            let size = metadata.size
-            let downloadURL = riversRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    return 
+                let size = metadata.size
+                let downloadURL = riversRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        return
+                    }
+                    print(downloadURL)
+                    completion(downloadURL.absoluteString)
                 }
                 print(downloadURL)
-                completion(downloadURL.absoluteString)
             }
-            print(downloadURL)
+            print(uploadTask)
+        } else {
+            completion("")
         }
-        print(uploadTask)
     }
 
     
