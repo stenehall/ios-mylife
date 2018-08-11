@@ -187,7 +187,7 @@ class ViewController:
     private let activityImage:UIButton = {
         let btn = UIButton(type:.system)
         btn.backgroundColor = .blue
-        btn.setTitle("Image", for: .normal)
+        btn.setTitle("+", for: .normal)
         btn.tintColor = .white
         btn.layer.cornerRadius = 5
         btn.clipsToBounds = true
@@ -450,10 +450,14 @@ class ViewController:
 
         activityImage.topAnchor.constraint(equalTo:activityLabel.bottomAnchor, constant:40).isActive = true
         activityImage.leftAnchor.constraint(equalTo:signedInContentView.leftAnchor, constant:20).isActive = true
-        activityImage.rightAnchor.constraint(equalTo:signedInContentView.rightAnchor, constant:-20).isActive = true
         activityImage.heightAnchor.constraint(equalToConstant:30).isActive = true
         
-        activityChild.topAnchor.constraint(equalTo:activityImage.topAnchor, constant:40).isActive = true
+        imageView.topAnchor.constraint(equalTo:activityLabel.bottomAnchor, constant:20).isActive = true
+        imageView.leftAnchor.constraint(equalTo:activityImage.rightAnchor, constant:20).isActive = true
+        imageView.rightAnchor.constraint(equalTo:signedInContentView.rightAnchor, constant:-20).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant:100).isActive = true
+        
+        activityChild.topAnchor.constraint(equalTo:imageView.bottomAnchor, constant:40).isActive = true
         activityChild.leftAnchor.constraint(equalTo:signedInContentView.leftAnchor, constant:20).isActive = true
         activityChild.rightAnchor.constraint(equalTo:signedInContentView.rightAnchor, constant:-20).isActive = true
         activityChild.heightAnchor.constraint(equalToConstant:30).isActive = true
@@ -472,11 +476,6 @@ class ViewController:
         btnSubmit.leftAnchor.constraint(equalTo:signedInContentView.leftAnchor, constant:20).isActive = true
         btnSubmit.rightAnchor.constraint(equalTo:signedInContentView.rightAnchor, constant:-20).isActive = true
         btnSubmit.heightAnchor.constraint(equalToConstant:30).isActive = true
-
-        imageView.topAnchor.constraint(equalTo:btnSubmit.bottomAnchor, constant:20).isActive = true
-        imageView.leftAnchor.constraint(equalTo:signedInContentView.leftAnchor, constant:20).isActive = true
-        imageView.rightAnchor.constraint(equalTo:signedInContentView.rightAnchor, constant:-20).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant:100).isActive = true
         
     }
     

@@ -12,23 +12,24 @@ import UserNotifications
 import Firebase
 import GoogleSignIn
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
     
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
+        FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+
         // Create a new window and attach my view
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = ViewController()
         
-        FirebaseApp.configure()
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
-                
+        
         // Check if we haev a users update the view based on it
         Auth.auth().addStateDidChangeListener { (_, user) in
             if user != nil {
