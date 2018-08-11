@@ -53,11 +53,6 @@ func submitActivity(activity: Activity, user: User,  location: CLLocation, place
                 "subLocality": placemark.subLocality ?? "",
             ]
         
-//        print(ServerValue.timestamp())
-//        let t = ServerValue.timestamp()
-//        let t1 = NSDate().timeIntervalSince1970
-//        let t2 = Firestore.database.ServerValue.TIMESTAMP
-        
         db.collection("users").document(user.uid).collection("activities").addDocument(data: [
                 "type": activity.type,
                 "prettyType": activity.prettyType,
